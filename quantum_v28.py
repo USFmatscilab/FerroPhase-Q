@@ -1,62 +1,43 @@
-# -----------------------------------------------------------------------------------
-# Simulation of ferroelectric polarization dynamics
-#
-# This code evolves the density matrix and analytical wavefunction of a
-# ferroelectric system under an applied electric field (AC or DC). The dynamics
-# include relaxation processes, which can be rescaled by 'gamma_rescale'.
-#
-# Inputs:
-#   - Simulation parameters are read from PARAMS_dyn.json
-#   - Key options include temperature, field type/strength, time step,
-#     relaxation model, gamma rescaling, and plotting mode.
-#
-# Outputs:
-#   1. simulation_output.txt   → time series of observables:
-#        * time [fs]
-#        * applied electric field [kV/cm]
-#        * polarization (analytical) [C/m²]
-#        * polarization (density matrix) [C/m²]
-#        * trace of density matrix (real)
-#
-#   2. polarization_vs_time.png   → polarization expectation vs time
-#   3. polarization_vs_field.png  → polarization vs applied electric field (if AC field)
-#
-# Plotting behavior:
-#   - plot_mode = "screen" → interactive plots shown + .png files saved
-#   - plot_mode = "none"   → no interactive plots, only .png files saved
-#
-# All simulation parameters from PARAMS_dyn.json are echoed below for reproducibility.
-# 
-# -----------------------------------------------------------------------------------
-
-
 """
-Implements exponential decay to the ground state, only analytical solution so far
-implements sinusoidal field on v11, still kink perists
-fixed analytical solution time dependence
-original approach, decay to equilibrium ground state.
-Author: Inna +AI
-Date: 2025-05-30 
 
-08/01/2025
--implemented relaxation rate for linblad all as (E_n-E_m)/hbar, so now the time
-step should be 0.0025
+-----------------------------------------------------------------------------------
+Simulation of ferroelectric polarization dynamics
 
--added "dc" field option
+This code evolves the density matrix and analytical wavefunction of a
+ferroelectric system under an applied electric field (AC or DC). The dynamics
+include relaxation processes, which can be rescaled by 'gamma_rescale'.
 
-- sped up linblad model
+Inputs:
+  - Simulation parameters are read from PARAMS_dyn.json
+  - Key options include temperature, field type/strength, time step,
+    relaxation model, gamma rescaling, and plotting mode.
 
-- implemented the option to either print or not to print on screen
-- implemented rescaling of gamma
+Outputs:
+  1. simulation_output.txt   → time series of observables:
+        * time [fs]
+        * applied electric field [kV/cm]
+        * polarization (analytical) [C/m²]
+        * polarization (density matrix) [C/m²]
+        * trace of density matrix (real)
 
+  2. polarization_vs_time.png   → polarization expectation vs time
+  3. polarization_vs_field.png  → polarization vs applied electric field (if AC field)
 
+Plotting behavior:
+  - plot_mode = "screen" → interactive plots shown + .png files saved
+  - plot_mode = "none"   → no interactive plots, only .png files saved
+
+All simulation parameters from PARAMS_dyn.json are echoed below for reproducibility.
+
+-----------------------------------------------------------------------------------
 """
+
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.sparse import diags
-from scipy.sparse.linalg import eigsh
+#from scipy.sparse.linalg import eigsh
 from scipy.sparse import issparse, csr_matrix, diags
 import sys
 import h5py
