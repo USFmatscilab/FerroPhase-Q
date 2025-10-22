@@ -147,15 +147,6 @@ def build_hamiltonian(length, n, v, mass):
 
 
 
-# def solve(Hmatrix, num_sol):
-#     """Diagonalize the Hamiltonian"""
-#     eigvals, eigvecs = eigsh(Hmatrix, k=num_sol, which='SA')
-#     sorted_indices = np.argsort(eigvals)
-#     e = eigvals[sorted_indices]
-#     phi = eigvecs[:, sorted_indices]
-#     return e, np.vstack([np.zeros(num_sol), phi, np.zeros(num_sol)])
-
-
 
 
 def compute_psi_t(energy, phi, c_n0, t_fs, intrinsic_dynamics=True):
@@ -224,34 +215,6 @@ def commutator(H, rho):
     
     return comm
 
-# def H_psi(H, psi):
-#     """
-#     Compute the time derivative of a wavefunction according to the Schrödinger equation:
-#     dψ/dt = (-i/ħ)Hψ
-    
-#     Args:
-#         H (sparse or dense matrix): Hamiltonian (shape [n, n])
-#         psi (array): Wavefunction (shape [n,])
-#         hbar (float): Reduced Planck constant in eV·fs (default: 0.6582119569)
-    
-#     Returns:
-#         dpsi_dt (array): Time derivative of the wavefunction (shape [n,])
-#     """
-#     hbar=0.6582119569
-#     # Ensure H is in sparse format for efficient multiplication
-#     if issparse(H):
-#         H = csr_matrix(H)
-#     else:
-#         H = np.asarray(H)
-    
-#     # Compute (-i/ħ)Hψ
-#     if issparse(H):
-#         dpsi_dt = (-1j / hbar) * H.dot(psi)
-#     else:
-#         dpsi_dt = (-1j / hbar) * np.dot(H, psi)
-    
-#     return dpsi_dt
-
 
 
 
@@ -274,7 +237,7 @@ def rel_term(rho_t_loc, energy_loc, phi, Temp, relaxation_model,gamma_rescale):
     d_rho_eig = np.zeros_like(rho_eig, dtype=complex)
 
     # For rlx_equil_dens, use equilibrium density
-    if relaxation_model == "rlx_equil_dens":
+    if relaxation_model == "DMB":
         exp_terms = np.exp(-beta * (energy_loc - energy_loc[0]))
         rho_eq_eig = np.diag(exp_terms / np.sum(exp_terms))
         for n in range(0,num_states):
@@ -287,7 +250,7 @@ def rel_term(rho_t_loc, energy_loc, phi, Temp, relaxation_model,gamma_rescale):
                  
 
     # For rlx_lindblad_grn: ground state gets populations from excited states
-    elif relaxation_model == "rlx_lindblad_grn":
+    elif relaxation_model == "LLO":
         exp_terms = np.exp(-beta * (energy_loc - energy_loc[0]))
         for n in range(num_states):
             if n == 0:
@@ -302,7 +265,7 @@ def rel_term(rho_t_loc, energy_loc, phi, Temp, relaxation_model,gamma_rescale):
                     d_rho_eig[n, m] -=  (gamma_n[n] + gamma_n[m]) * rho_eig[n, m]  
 
 
-    elif relaxation_model == "rlx_lindblad_all":
+    elif relaxation_model == "LO":
         num_states = len(energy_loc)
        
         # Compute transition rates γ_kn = |E_k - E_n| / ħ
