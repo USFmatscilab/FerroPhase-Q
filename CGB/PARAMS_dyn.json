@@ -1,5 +1,5 @@
 {
-  "Temp": 300.0,
+  "Temp": 30.0,
  "field_type": "ac",
  "E_max": 800.0,
  "E_min": -800.0,
@@ -7,11 +7,11 @@
  "nsteps": 360000,
  "delta_t": 0.0850,
  "intrinsic_dynamics": false,
- "P_cen": 0.2,
+ "P_cen": 0.20,
  "delta_P": 0.02,
  "n_out": 500,
  "relaxation_model": "DMB",
  "gamma_rescale": 1.0,
  "plot_mode": "screen" , 
- "integrator": "simple"
+ "integrator": "predictor_corrector"
  }
