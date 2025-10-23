@@ -1,7 +1,8 @@
 # FerroPhase-Q
 *******Quantum Ferroelectric Phase Transitions*******
 
-Step 1: ############################################################################################
+Step 1: 
+########################################START####################################################
 generate.py :- This is for Ground-State Relaxation model. It also generates input data for next steps of DMB, LLO and LO model calculations at finite temperature
 
 Input:
@@ -33,17 +34,27 @@ Usage:
   "num_sol": 80, Total number of eigenstates
   "n": 200  
 }
- 
-############################################################################################
+#################################END###########################################################
+
+
+
+Step 2: (Optional)
+################################START############################################################
+analyze.py :-
 
 
 
 
 
 
-1. generate.py (input PARAMS.json): generates input data
-2. optional analyze.py (input PARAMS_anal.json) analyzes data and makes some plots
-3. quantum_v20.py (input PARAMS_dyn.json) run calculations for several models, see explnation above
+################################END############################################################
+
+
+
+
+Step 3: 
+##############################START##############################################################
+quantum_v28.py :-
 
 
 {
@@ -86,3 +97,10 @@ Usage:
 "gamma_rescale": 1.0 rescalies damping parameter for rlx_lindblad_all and lx_lindblad_all, suggested use for rlx_lindblad_all is 1
 "plot_mode": "screen"         // NEW: "screen" or "none"
  "integrator": "simple"   // options: "simple", "predictor_corrector" simple works better for large time steps
+
+################################END############################################################
+
+
+
+
+
