@@ -7,17 +7,17 @@ generate.py :- The details of this file is given in the header of "generate.py".
 
 INPUT FILES:
 - DataMagnitude.txt : Text file containing polarization (in C/m) vs potential energy (in eV)
-- PARAM.jason : This file contains the parameters for the Ground-State Relaxation (GSR) Model. Actual file for the calculations ferroelectric and antiferroelectric are given in the main folder (PZO and CGB). The parameters are:
+- PARAM.jason : This file contains the simulation parameters for the Ground-State Relaxation (GSR) Model. Actual file for the calculations ferroelectric and antiferroelectric are given in the main folder (PZO and CGB). The parameters are:
 
 {
-  "Emin": -500.0, (Maximum electric field in kV/cm)
-  "Emax": 500.0, (Minimum electric field in kV/cm)
-  "stepE": 801, (Steps of electric field)
-  "Temp": 300.0, (Temperature of the system in K)
+  "Emin": -500.0,   (Maximum electric field in kV/cm)
+  "Emax": 500.0,    (Minimum electric field in kV/cm)
+  "stepE": 801,     (Steps of electric field)
+  "Temp": 300.0,    (Temperature of the system in K)
   "z_star": 6.3244, (Born effective charge of the system)
-  "Vol": 4407.76, (Voulume of the structure used in DFT calculations Å^3)
-  "mass": 10000.0, (Mass of the particle in m_e)
-  "num_sol": 80, (Total number of eigenstates)
+  "Vol": 4407.76,   (Voulume of the structure used in DFT calculations Å^3)
+  "mass": 10000.0,  (Mass of the particle in m_e)
+  "num_sol": 80,    (Total number of eigenstates)
   "n": 200  
 }
 
@@ -42,8 +42,8 @@ INPUT FILES:
     {
         "Temp": 300,(Temperature in K)
         "x_min": -1.0,        (Average displacement of polar w.r.t nonpolar/antipolar in nm)
-        "x_max": 1.0,        (Average displacement of polar w.r.t nonpolar/antipolar in nm)
-        "Field_to_plot": 400 (optional)
+        "x_max": 1.0,         (Average displacement of polar w.r.t nonpolar/antipolar in nm)
+        "Field_to_plot": 400  (Electric field in kV/cm)
     }
 
 OUTPUT FILES:
@@ -56,8 +56,7 @@ OUTPUT FILES:
 
 Step 3: 
 ********************************START**********************************************
-quantum_v28.py :-
-
+quantum_v28.py :- This code evolves the density matrix and analytical wavefunction of a ferroelectric/antiferroelectric system under an applied electric field (AC or DC).
 
 {
   "Temp": 900.0,
