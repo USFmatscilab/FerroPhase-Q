@@ -1,5 +1,32 @@
 # FerroPhase-Q
-Quantum Ferroelectric Phase Transitions
+*******Quantum Ferroelectric Phase Transitions*******
+
+Step 1: 
+generate.py :- This is for Ground-State Relaxation model. It also generates input data for next steps of DMB, LLO and LO model calculations at finite temperature
+
+input files: PARAMS.json, DataMagnitude.txt 
+output files: all_simulation_data.h5, interpolated_potential.txt, P_vs_E.txt, eigenstates_field_field_400.png
+
+The parameters of PARAMS.json
+
+{
+  "Emin": -500.0, Maximum electric field
+  "Emax": 500.0, Minimum electric field
+  "stepE": 801,
+  "Temp": 300.0,
+  "z_star": 6.3244,
+  "Vol": 4407.76,
+  "mass": 10000.0,
+  "num_sol": 80,
+  "n": 200
+}
+ 
+
+
+
+
+
+
 
 1. generate.py (input PARAMS.json): generates input data
 2. optional analyze.py (input PARAMS_anal.json) analyzes data and makes some plots
