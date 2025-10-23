@@ -6,12 +6,12 @@ Step 1:
 generate.py :- The details of this file is given in the header of "generate.py". This is for Ground-State Relaxation model. It also generates input data for next steps of DMB, LLO and LO model calculations at finite temperature.
 
 INPUT FILES:
-- DataMagnitude.txt : Text file containing polarization (in C/m) vs potential energy (in eV)
-- PARAM.jason : This file contains the simulation parameters for the Ground-State Relaxation (GSR) Model. Actual file for the calculations ferroelectric and antiferroelectric are given in the main folder (PZO and CGB). The parameters are:
+- DataMagnitude.txt : Text file containing polarization (in C/m^2) vs potential energy (in eV)
+- PARAM.jason       : This file contains the simulation parameters for the Ground-State Relaxation (GSR) Model. Actual file for the calculations ferroelectric and antiferroelectric are given in the main folder (PZO and CGB). The parameters are:
 
 {
-  "Emin": -500.0,   (Maximum electric field in kV/cm)
-  "Emax": 500.0,    (Minimum electric field in kV/cm)
+  "Emin": -500.0,   (Maximum electric field range in kV/cm)
+  "Emax": 500.0,    (Minimum electric field range in kV/cm)
   "stepE": 801,     (Steps of electric field)
   "Temp": 300.0,    (Temperature of the system in K)
   "z_star": 6.3244, (Born effective charge of the system)
@@ -22,9 +22,9 @@ INPUT FILES:
 }
 
 OUTPUT FILES:
-- hysteresis_loop.png : Plot of ⟨P⟩ vs E (hysteresis loop)
-- P_vs_E.txt          : Tabulated polarization vs field data
-- all_simulation_data.h5 : HDF5 file with all simulation results
+- hysteresis_loop.png       : Plot of ⟨P⟩ vs E (hysteresis loop)
+- P_vs_E.txt                : Tabulated polarization vs field data
+- all_simulation_data.h5    : HDF5 file with all simulation results
 - eigenstates_field_XXX.png : Potential and first eigenstates for chosen field
 #################################END###########################################################
 
@@ -36,9 +36,9 @@ analyze.py :- This script performs thermal averaging analysis of position expect
 
 INPUT FILES:
 ------------
-- all_simulation_data.h5 : HDF5 file with eigenvalues/vectors and attributes as genereted from step 1.
+- all_simulation_data.h5     : HDF5 file with eigenvalues/vectors and attributes as genereted from step 1.
 - interpolated_potential.txt : Text file with columns x, V(x) as genereted from step 1.
-- PARAMS_anal.json : JSON file with analysis parameters including:
+- PARAMS_anal.json           : JSON file with analysis parameters including:
     {
         "Temp": 300,(Temperature in K)
         "x_min": -1.0,        (Average displacement of polar w.r.t nonpolar/antipolar in nm)
@@ -58,47 +58,24 @@ Step 3:
 ********************************START**********************************************
 quantum_v28.py :- This code evolves the density matrix and analytical wavefunction of a ferroelectric/antiferroelectric system under an applied electric field (AC or DC).
 
+
 {
-  "Temp": 900.0,
- "field_type": "ac",
- "E_max": 400.0,
- "E_min": -400.0,
- "num_periods": 1.25,
- "nsteps": 100000,
- "delta_t": 0.025,
- "intrinsic_dynamics": false,
- "P_cen": 0.0,
- "delta_P": 0.1,
- "n_out": 500,
- "relaxation_model": "rlx_lindblad_grn",
- "gamma_rescale": 1.0,
- "plot_mode": "screen",
-  "integrator": "simple"
+"Temp": 0.01,                  (Temperature in in K)
+"field_type": "ac",            (Option are "ac" or "dc")
+"E_max": 400,                  (Maximum electric field range in kV/cm)
+"E_min": -400.0                (Maximum electric field range in kV/cm}
+"num_periods": 1.25            (Period of the Hysteresis loop)
+"nsteps": 240000,              (Number of simulation steps)
+"delta_t": 0.045,              (Intergration time step in fs)
+"intrinsic_dynamics": false,   (Option are true or false)
+"P_cen": 0.0,                  (Initial condition, centering of the wave packet in polarization units C/m^2)
+"delta_P": 0.01,               (Initial condition, width of the packet in polarization units C/m^2)
+"n_out": 500,                  (How often to plot probability densities)
+"relaxation_model": "DMB"      (Different relaxation models, options are DMB, LLO or LO)
+"gamma_rescale": 1.0           (Rescalies damping parameter for LLO and LO is 0.0125, for DMB no rescaling is required, therefore for DMB it is 1)
+"plot_mode": "screen"          (Options to visualise the plots, while running the calculation. Options are "screen" or "none")
+ "integrator": "simple"        (Integration types. Optionsare "simple" or "predictor_corrector", simple works better for large time steps)
 }
-
-
-
-
-
-"Temp": 0.01, # Temp in K
-"field_type": "ac", "linear"
-"E_max" and "E_min": -400.0 range of fields to simulate
-"num_periods": 1.25 # not properly tested
-"nsteps": 100000, # number of steps
-"delta_t": 0.085, # intergration time step. Use 0.00085 if intrinsic dynamics is turned on
-"intrinsic_dynamics": false, # true or false. If false relaxation only will be used
-"P_cen": 0.0, # initial condition, centering of the wave packet in polarization units C/m^2
-"delta_P": 0.1, initial condition, width of the packet in polarization units C/m^2
-"n_out": 500, # how often to plot probability densities
-"relaxation_model": "rlx_lindblad_all" # different relaxation models
-#"rlx_equil_dens"  relaxation to equilibrium desnity matrix
-#"rlx_lindblad_grn" Lindblad relaxation to the ground state only
-#"rlx_lindblad_all" Lindblad relaxation to all states
-#"rlx_lindblad_grn_hybrid" Lindblad relaxation to the ground state only but no gain in ground state population, only happens through renormalization
-"gamma_rescale": 1.0 rescalies damping parameter for rlx_lindblad_all and lx_lindblad_all, suggested use for rlx_lindblad_all is 1
-"plot_mode": "screen"         // NEW: "screen" or "none"
- "integrator": "simple"   // options: "simple", "predictor_corrector" simple works better for large time steps
-
 ********************************END**********************************************
 
 
