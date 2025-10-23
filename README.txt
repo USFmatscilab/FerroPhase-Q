@@ -62,7 +62,7 @@ quantum_v28.py :- This code evolves the density matrix and analytical wavefuncti
 INPUT FILES:
 - 1. all_simulation_data.h5     : HDF5 file with eigenvalues/vectors and attributes as genereted from step 1.
 - 2. interpolated_potential.txt : Text file with columns x, V(x) as genereted from step 1.
-- 3. PARAM_dyn.json             :JSON file with simulations parameters including:
+- 3. PARAM_dyn.json             : JSON file with simulations parameters including:
 
 {
 "Temp": 0.01,                  (Temperature in in K)
