@@ -72,9 +72,9 @@ quantum_v28.py :- This code evolves the density matrix and analytical wavefuncti
 "delta_P": 0.01,               (Initial condition, width of the packet in polarization units C/m^2)
 "n_out": 500,                  (How often to plot probability densities)
 "relaxation_model": "DMB"      (Different relaxation models, options are DMB, LLO or LO)
-"gamma_rescale": 1.0           (Rescalies damping parameter for LLO and LO is 0.0125, for DMB no rescaling is required, therefore for DMB it is 1)
+"gamma_rescale": 1.0           (Rescalies damping parameter. For LLO and LO it is 0.0125, For DMB it is 1)
 "plot_mode": "screen"          (Options to visualise the plots, while running the calculation. Options are "screen" or "none")
- "integrator": "simple"        (Integration types. Optionsare "simple" or "predictor_corrector", simple works better for large time steps)
+ "integrator": "simple"        (Integration types. "simple" or "predictor_corrector", simple works better for large time steps)
 }
 ********************************END**********************************************
 
