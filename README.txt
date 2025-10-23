@@ -6,8 +6,8 @@ Step 1:
 generate.py :- The details of this file is given in the header of "generate.py". This is for Ground-State Relaxation model. It also generates input data for next steps of DMB, LLO and LO model calculations at finite temperature.
 
 INPUT FILES:
-- DataMagnitude.txt : Text file containing polarization (in C/m^2) vs potential energy (in eV)
-- PARAM.jason       : This file contains the simulation parameters for the Ground-State Relaxation (GSR) Model. Actual file for the calculations ferroelectric and antiferroelectric are given in the main folder (PZO and CGB). The parameters are:
+- 1. DataMagnitude.txt : Text file containing polarization (in C/m^2) vs potential energy (in eV)
+- 2. PARAM.jason       : JSON file with simulations parameters including:
 
 {
   "Emin": -500.0,   (Maximum electric field range in kV/cm)
@@ -22,10 +22,10 @@ INPUT FILES:
 }
 
 OUTPUT FILES:
-- hysteresis_loop.png       : Plot of ⟨P⟩ vs E (hysteresis loop)
-- P_vs_E.txt                : Tabulated polarization vs field data
-- all_simulation_data.h5    : HDF5 file with all simulation results
-- eigenstates_field_XXX.png : Potential and first eigenstates for chosen field
+- 1. hysteresis_loop.png       : Plot of ⟨P⟩ vs E (hysteresis loop)
+- 2. P_vs_E.txt                : Tabulated polarization vs field data
+- 3. all_simulation_data.h5    : HDF5 file with all simulation results
+- 4. eigenstates_field_XXX.png : Potential and first eigenstates for chosen field
 #################################END###########################################################
 
 
@@ -36,9 +36,10 @@ analyze.py :- This script performs thermal averaging analysis of position expect
 
 INPUT FILES:
 ------------
-- all_simulation_data.h5     : HDF5 file with eigenvalues/vectors and attributes as genereted from step 1.
-- interpolated_potential.txt : Text file with columns x, V(x) as genereted from step 1.
-- PARAMS_anal.json           : JSON file with analysis parameters including:
+- 1. all_simulation_data.h5     : HDF5 file with eigenvalues/vectors and attributes as genereted from step 1.
+- 2. interpolated_potential.txt : Text file with columns x, V(x) as genereted from step 1.
+- 3. PARAMS_anal.json           : JSON file with analysis parameters including:
+
     {
         "Temp": 300,(Temperature in K)
         "x_min": -1.0,        (Average displacement of polar w.r.t nonpolar/antipolar in nm)
@@ -47,8 +48,8 @@ INPUT FILES:
     }
 
 OUTPUT FILES:
-- X_av_and_partial_vs_Field.png : Plot of ⟨x⟩ vs Electric Field for both full and partial averages.
-- Eigenstates_99percent.png : Plot of eigenstates that contribute ≥99% of the thermal probability density at the specified Field_to_plot.
+- 1. X_av_and_partial_vs_Field.png : Plot of ⟨x⟩ vs Electric Field for both full and partial averages.
+- 2. Eigenstates_99percent.png : Plot of eigenstates that contribute ≥99% of the thermal probability density at the specified Field_to_plot.
 --------------------------------END-------------------------------------------------
 
 
@@ -58,6 +59,10 @@ Step 3:
 ********************************START**********************************************
 quantum_v28.py :- This code evolves the density matrix and analytical wavefunction of a ferroelectric/antiferroelectric system under an applied electric field (AC or DC).
 
+INPUT FILES:
+- 1. all_simulation_data.h5     : HDF5 file with eigenvalues/vectors and attributes as genereted from step 1.
+- 2. interpolated_potential.txt : Text file with columns x, V(x) as genereted from step 1.
+- 3. PARAM_dyn.json             :JSON file with simulations parameters including:
 
 {
 "Temp": 0.01,                  (Temperature in in K)
@@ -76,9 +81,14 @@ quantum_v28.py :- This code evolves the density matrix and analytical wavefuncti
 "plot_mode": "screen"          (Options to visualise the plots, while running calculation, "screen" or "none")
  "integrator": "simple"        (Integrator types. "simple" or "predictor_corrector", simple works better for large time steps)
 }
+
+OUTPUT FILES:
+- 1. simulation_output.txt   time [fs]
+          * applied electric field [kV/cm]
+          * polarization (analytical) [C/m²]
+          * polarization (density matrix) [C/m²]
+          * trace of density matrix (real)
+
+- 2. polarization_vs_time.png   → polarization expectation vs time
+- 3. polarization_vs_field.png  → polarization vs applied electric field (if AC field)
 ********************************END**********************************************
-
-
-
-
-
