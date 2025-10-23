@@ -1,27 +1,40 @@
 # FerroPhase-Q
 *******Quantum Ferroelectric Phase Transitions*******
 
-Step 1: 
+Step 1: #################################################################################################################################################################
 generate.py :- This is for Ground-State Relaxation model. It also generates input data for next steps of DMB, LLO and LO model calculations at finite temperature
 
-input files: PARAMS.json, DataMagnitude.txt 
-output files: all_simulation_data.h5, interpolated_potential.txt, P_vs_E.txt, eigenstates_field_field_400.png
+Input:
+------
+- DataMagnitude.txt : Text file containing polarization vs potential energy
+                      (U(P) in arbitrary units)
+Output:
+-------
+- hysteresis_loop.png : Plot of ⟨P⟩ vs E (hysteresis loop)
+- P_vs_E.txt          : Tabulated polarization vs field data
+- all_simulation_data.h5 : HDF5 file with all simulation results
+- eigenstates_field_XXX.png : Potential and first eigenstates for chosen field
 
-The parameters of PARAMS.json
+Usage:
+------
+1. Make sure 'DataMagnitude.txt' is present in the same directory.
+2. Run the script to compute and save the hysteresis loop data.
+3. Use the interactive prompt to analyze eigenstates for selected field values.
+
 
 {
   "Emin": -500.0, Maximum electric field
   "Emax": 500.0, Minimum electric field
   "stepE": 801,
-  "Temp": 300.0,
-  "z_star": 6.3244,
-  "Vol": 4407.76,
-  "mass": 10000.0,
-  "num_sol": 80,
-  "n": 200
+  "Temp": 300.0, Temperature
+  "z_star": 6.3244, Born effective charge of the system
+  "Vol": 4407.76, Voulume of the structure used in DFT calculations
+  "mass": 10000.0, Mass of the particle
+  "num_sol": 80, Total number of eigenstates
+  "n": 200  
 }
  
-
+#################################################################################################################################################################
 
 
 
