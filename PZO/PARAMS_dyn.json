@@ -1,5 +1,5 @@
 {
-  "Temp": 1.0,
+  "Temp": 300.0,
  "field_type": "ac",
  "E_max": 400.0,
  "E_min": -400.0,
@@ -10,7 +10,7 @@
  "P_cen": 0.0,
  "delta_P": 0.01,
  "n_out": 500,
- "relaxation_model": "LLO",
+ "relaxation_model": "DMB",
  "gamma_rescale": 1.0,
  "plot_mode": "screen" , 
  "integrator": "simple"
