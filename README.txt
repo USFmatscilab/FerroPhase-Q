@@ -4,8 +4,7 @@
 Step 1: 
 ########################################START####################################################
 generate.py :- 
-This script simulates polarization hysteresis loops in ferroelectric materials based on a 1D quantum mechanical model. It computes the average polarization ⟨P⟩ as a function of applied electric field E using a statistical mixture of quantum states. The energy landscape U(P) is taken as input, and the system's response is computed by solving the time-independent Schrödinger equation under
-various field strengths.
+This script simulates polarization hysteresis loops in ferroelectric materials based on a 1D quantum mechanical model. It computes the average polarization ⟨P⟩ as a function of applied electric field E using a statistical mixture of quantum states. The energy landscape U(P) is taken as input, and the system's response is computed by solving the time-independent Schrödinger equation under various field strengths.
 
 KEY FEATURES:
 Uses statistical density matrix formalism to compute ⟨P⟩(E) Solves the 1D Schrödinger equation with field-dependent potential Computes thermal occupation of quantum states Generates and saves hysteresis loops Saves all data (fields, energies, wavefunctions, polarization) to HDF5 Supports interactive analysis of eigenstates for any field value
