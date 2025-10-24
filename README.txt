@@ -72,8 +72,6 @@ OUTPUT:
   full and partial averages.
 - Eigenstates_99percent.png : Plot of eigenstates that contribute ≥99% of 
   the thermal probability density at the specified Field_to_plot.
-
-
 --------------------------------END-------------------------------------------------
 
 
