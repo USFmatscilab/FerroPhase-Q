@@ -396,7 +396,7 @@ def read_json_parameters(json_filename):
         "P_cen": params.get("P_cen", 0.0),
         "delta_P": params.get("delta_P", 0.1),
         "n_out": params.get("n_out", 500),
-        "relaxation_model": params.get("relaxation_model", "rlx_equil_dens"),
+        "relaxation_model": params.get("relaxation_model", "DMB"),
         "gamma_rescale": params.get("gamma_rescale", 1.0),
         "plot_mode": params.get("plot_mode", "screen"),
         "integrator": params.get("integrator", "simple") 
@@ -727,6 +727,7 @@ end_time = time.time()
 elapsed_time = end_time - start_time
 
 print(f"Simulation completed in {elapsed_time:.2f} seconds")
+
 
 
 
