@@ -1,0 +1,17 @@
+{
+  "Temp": 1.0,
+ "field_type": "ac",
+ "E_max": 800.0,
+ "E_min": -800.0,
+ "num_periods": 1.25,
+ "nsteps": 360000,
+ "delta_t": 0.0850,
+ "intrinsic_dynamics": false,
+ "P_cen": 0.20,
+ "delta_P": 0.02,
+ "n_out": 500,
+ "relaxation_model": "LLO",
+ "gamma_rescale": 0.0125,
+ "plot_mode": "screen" , 
+ "integrator": "simple"
+ }
