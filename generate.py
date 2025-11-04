@@ -26,20 +26,21 @@ Key Features:
 
 Input:
 ------
-- DataMagnitude.txt : Text file containing polarization vs potential energy
-                      (U(P) in arbitrary units)
+- DataMagnitude.txt : Text file containing polarization (in C/m^2) vs potential energy (eV)
+                      
 
 Output:
 -------
-- hysteresis_loop.png : Plot of ⟨P⟩ vs E (hysteresis loop)
-- P_vs_E.txt          : Tabulated polarization vs field data
+- P_vs_E.png : Equilibrium <P>(E)
+- P_vs_E.txt : Tabulated values for Equilibrium <P>(E)
 - all_simulation_data.h5 : HDF5 file with all simulation results
-- eigenstates_field_XXX.png : Potential and first eigenstates for chosen field
+- eigenstates_field_XXX.png : Potential and first eigenstates for chosen field and for zero field
+- interpolated_potential.txt: interpolated potential
 
 Usage:
 ------
 1. Make sure 'DataMagnitude.txt' is present in the same directory.
-2. Run the script to compute and save the hysteresis loop data.
+2. Run the script to compute and save  outputs.
 3. Use the interactive prompt to analyze eigenstates for selected field values.
 
 
@@ -334,4 +335,5 @@ while True:
       analyze_field_data_by_value(field_val, n_states)
   except ValueError:
       print("Please enter a valid numeric field value or 'q' to quit.")
+
 
