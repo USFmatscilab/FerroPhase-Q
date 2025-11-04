@@ -11,7 +11,7 @@ Uses statistical density matrix formalism to compute ⟨P⟩(E) Solves the 1D Sc
 
 INPUT FILES:
 - 1. DataMagnitude.txt : Text file containing polarization (in C/m^2) vs potential energy (in eV)
-- 2. PARAM.jason       : JSON file with simulations parameters including:
+- 2. PARAM.json       : JSON file with simulations parameters including:
 
 {
   "Emin": -500.0,   (Maximum electric field range in kV/cm)
