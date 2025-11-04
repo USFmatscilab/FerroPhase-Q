@@ -1,6 +1,4 @@
 
-
-
 """
 ===============================================================================
 Hysteresis Loop Simulation for Ferroelectric Materials Using 1D Schrödinger Equation
@@ -47,9 +45,8 @@ Usage:
 
 
 ===============================================================================
-
-
 """
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -304,10 +301,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(X_E[:, 0], 100.0 * X_E[:, 1], 'b-', linewidth=2)
 plt.xlabel('Electric Field (kV/cm)', fontsize=14)
 plt.ylabel('Polarization (μC/cm²)', fontsize=14)
-plt.title(f'Hysteresis Loop at {Temp} K', fontsize=16)
+plt.title(f'P(E) at {Temp} K', fontsize=16)
 plt.grid(True)
 plt.tight_layout()
-plt.savefig('hysteresis_loop.png', dpi=300)
+plt.savefig('P_vs_E.png', dpi=300)
 plt.show()
 
 
@@ -335,5 +332,3 @@ while True:
       analyze_field_data_by_value(field_val, n_states)
   except ValueError:
       print("Please enter a valid numeric field value or 'q' to quit.")
-
-
