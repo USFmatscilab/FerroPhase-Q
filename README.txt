@@ -26,10 +26,13 @@ INPUT FILES:
 }
 
 OUTPUT FILES:
-- 1. hysteresis_loop.png       : Plot of ⟨P⟩ vs E (hysteresis loop)
-- 2. P_vs_E.txt                : Tabulated polarization vs field data
-- 3. all_simulation_data.h5    : HDF5 file with all simulation results
-- 4. eigenstates_field_XXX.png : Potential and first eigenstates for chosen field
+
+-------
+- P_vs_E.png : Equilibrium <P>(E)
+- P_vs_E.txt : Tabulated values for Equilibrium <P>(E)
+- all_simulation_data.h5 : HDF5 file with all simulation results
+- eigenstates_field_XXX.png : Potential and first eigenstates for chosen field and for zero field
+- interpolated_potential.txt: interpolated potential
 
 USAGE:
 -1. Make sure 'DataMagnitude.txt' is present in the same directory.
