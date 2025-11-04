@@ -203,7 +203,7 @@ def analyze_field_data_by_value(field_value_input, n_states_to_plot=3):
             fig.tight_layout()
             fig.legend(loc='upper right')
             plt.grid(True)
-            plt.savefig(f'eigenstates_field_{field_name}.png', dpi=150)
+            plt.savefig(f'eigenstates_field_{E:.2f}kVcm.png', dpi=150)
             plt.show()
 
             # Print all eigenvalues in eV, 2pi THz, and THz
@@ -334,3 +334,4 @@ while True:
       analyze_field_data_by_value(field_val, n_states)
   except ValueError:
       print("Please enter a valid numeric field value or 'q' to quit.")
+
