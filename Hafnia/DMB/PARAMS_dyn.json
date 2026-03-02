@@ -1,0 +1,16 @@
+{
+  "Temp": 100.0,
+ "field_type": "ac",
+ "E_max": 3000.0,
+ "E_min": -3000.0,
+ "num_periods": 2.25,
+ "nsteps": 240000,
+ "delta_t": 0.085,
+ "intrinsic_dynamics": false,
+ "P_cen": 0.5,
+ "delta_P": 0.059,
+ "n_out": 500,
+ "relaxation_model": "DMB",
+ "gamma_rescale": 1.0,
+ "integrator": "simple"
+ }
