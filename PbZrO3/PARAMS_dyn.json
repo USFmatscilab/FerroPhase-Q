@@ -1,8 +1,8 @@
 {
   "Temp": 300,
  "field_type": "ac",
- "E_max": 800.0,
- "E_min": -800.0,
+ "E_max": 400.0,
+ "E_min": -400.0,
  "num_periods": 1.25,
  "nsteps": 75000,
  "delta_t": 0.1,
