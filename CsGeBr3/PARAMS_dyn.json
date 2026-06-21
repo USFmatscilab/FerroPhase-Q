@@ -1,0 +1,18 @@
+{
+  "Temp": 300,
+ "field_type": "ac",
+ "E_max": 800.0,
+ "E_min": -800.0,
+ "num_periods": 1.25,
+ "nsteps": 75000,
+ "delta_t": 0.01,
+ "intrinsic_dynamics": false,
+ "P_cen": -0.2,
+ "delta_P": 0.05,
+ "n_out": 500,
+ "relaxation_model": "DMB",
+ "thermal_weight": "boltzmann",
+ "gamma_rescale":1.359411e-02,
+ "plot_mode": "none",
+ "integrator": "simple"
+ }
