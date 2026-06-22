@@ -1,0 +1,35 @@
+
+#======================================================================
+# CRYSTAL DATA
+#----------------------------------------------------------------------
+data_VESTA_phase_1
+
+_chemical_name_common                  'isodistort-output0002'
+_cell_length_a                         5.551140
+_cell_length_b                         5.551140
+_cell_length_c                         5.551140
+_cell_angle_alpha                      89.617760
+_cell_angle_beta                       89.617760
+_cell_angle_gamma                      89.617760
+_cell_volume                           171.047856
+_space_group_name_H-M_alt              'P 1'
+_space_group_IT_number                 1
+
+loop_
+_space_group_symop_operation_xyz
+   'x, y, z'
+
+loop_
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_adp_type
+   _atom_site_U_iso_or_equiv
+   _atom_site_type_symbol
+   Cs1        1.0     0.998720     0.998720     0.998720    Uiso  ? Cs
+   Ge1        1.0     0.492950     0.492950     0.492950    Uiso  ? Ge
+   Br1        1.0     0.499000     0.499000     0.006940    Uiso  ? Br
+   Br2        1.0     0.006940     0.499000     0.499000    Uiso  ? Br
+   Br3        1.0     0.499000     0.006940     0.499000    Uiso  ? Br
