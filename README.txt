@@ -20,7 +20,7 @@ INPUT FILES:
   "Temp": 300.0,    (Temperature of the system in K)
   "z_star": 6.3244, (Born effective charge of the system)
   "Vol": 4407.76,   (Voulume of the structure used in DFT calculations Å^3)
-  "mass": 17400.44, (Mass of the particle in m_amu can be obtained by running generate.py)
+  "mass": 17400.44, (Mass of the particle in m_amu can be obtained by running analyze_v3.py)
   "num_sol": 80,    (Total number of eigenstates)
   "n": 200  
 }
@@ -67,9 +67,9 @@ INPUT FILES:
         "x_min": 0.0,                  (Average displacement of polar w.r.t nonpolar/antipolar in nm)
         "x_max": 1.2,                  (Average displacement of polar w.r.t nonpolar/antipolar in nm)
         "Field_to_plot": 0.0           (Electric field in kV/cm)
-        "polar_mode_freq_THz": 18.72,  (Polar mode frequency in cm-1)
-        "do_frequency_analysis": true, (Optional)
-        "gamma_target_thz": 0.076447   (Experiemental damping constant in THz)
+        "polar_mode_freq_THz": 18.72,  (Polar mode frequency in THz)
+        "do_frequency_analysis": true, (If `polar_mode_freq_THz` is provided, suggests a mass reproducing that frequency (output in me and amu))
+        "gamma_target_thz": 0.076447   (Experiemental damping constant in THz. It will provide gamma_rescale)
     }
 
 OUTPUT:
